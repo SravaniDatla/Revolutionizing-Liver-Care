@@ -1,0 +1,130 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liver Cirrhosis Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+    background-image: url("liver.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    background-color: rgba(250, 246, 248, 0.95);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #18191a;
+}
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #0e0b15;
+}
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #29b952;
+    color: rgb(39, 228, 102);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #1f6391;
+}
+.result {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #16a085;
+}
+@media (max-width: 600px) {
+    .container {
+    padding: 20px;
+}
+form input,
+    button {
+    font-size: 15px;
+    color:green;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2 align='center'>Liver Cirrhosis Risk Predictor</h2>
+
+        <form action="/predict" method="POST">
+    <label>Age (in years)</label>
+    <input type="number" step="any" name="Age" required>
+
+    <label>Duration of Alcohol Consumption (in years)</label>
+    <input type="number" step="any" name="Duration of alcohol consumption(years)" required>
+
+    <label>Alcohol Quantity (quarters/day)</label>
+    <input type="number" step="any" name="Quantity of alcohol consumption (quarters/day)" required>
+
+    <label>Total Cholesterol (TCH in mg/dL)</label>
+    <input type="number" step="any" name="TCH" required>
+
+    <label>Triglycerides (TG in mg/dL)</label>
+    <input type="number" step="any" name="TG" required>
+
+    <label>Low-Density Lipoprotein (LDL in mg/dL)</label>
+    <input type="number" step="any" name="LDL" required>
+
+    <label>High-Density Lipoprotein (HDL in mg/dL)</label>
+    <input type="number" step="any" name="HDL" required>
+
+    <label>Hemoglobin Level (g/dL)</label>
+    <input type="number" step="any" name="Hemoglobin  (g/dl)" required>
+
+    <label>SGOT (AST in U/L)</label>
+    <input type="number" step="any" name="SGOT/AST      (U/L)" required>
+
+    <label>SGPT (ALT in U/L)</label>
+    <input type="number" step="any" name="SGPT/ALT (U/L)" required>
+
+    <input type="submit" value="Predict Risk">
+</form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
