@@ -29,7 +29,7 @@ liver-care/
 ├── static/ # Optional: for images, CSS, etc.
 └── README.md # This documentation file
 
- # required commands
+ ## required commands
 - pip install flask pandas scikit-learn matplotlib seaborn xgboost imbalanced-leam
 - python model.py
 - python app.py Visit http://127.0.0.1:5000 in your browser.
